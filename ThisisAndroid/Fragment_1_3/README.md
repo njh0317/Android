@@ -18,7 +18,7 @@
     01. onViewCreated를 override한다.
     02. bundle 객체를 선언하고 전달하고자 하는 값을 key, value로 설정한다
         ```kotlin
-            val bundle = bundleOf("valueKey" to "YES")
+        val bundle = bundleOf("valueKey" to "YES")
         ```
     
     03. setFragmentResult 메서드를 key, bundle 형태로 설정
