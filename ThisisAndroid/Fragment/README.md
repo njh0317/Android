@@ -92,7 +92,7 @@
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setFragment()
+        setFragment()//프래그먼트 초기화
 
         binding.btnSend.setOnClickListener {
             listFragment.setValue("전달할 값") //함수 사용
