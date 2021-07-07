@@ -11,5 +11,6 @@
 + [CustomText](https://github.com/njh0317/Android/tree/main/ThisisAndroid/CustomView)
 
 7/7
-+ [ViewPager]()
-+ [View를 사용하는 ViewPager]()
++ [ViewPager](https://github.com/njh0317/Android/tree/main/ThisisAndroid/ViewPager)
++ [View를 사용하는 ViewPager](https://github.com/njh0317/Android/tree/main/ThisisAndroid/ViewpagerView)
++ [Permission](https://github.com/njh0317/Android/tree/main/ThisisAndroid/Permission)
