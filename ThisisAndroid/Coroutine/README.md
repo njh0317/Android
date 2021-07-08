@@ -40,7 +40,7 @@ binding.btnDownload.setOnClickListener {
 }
 ```
 
-### 디스페처의 종류
+### 디스패처의 종류
 CoroutineScope의 경우 코루틴이 실행될 스레드를 지정하기 위해 디스패처를 지정하야 한다.
 + Dispatchers.Default : CPU를 많이 사용하는 작업을 백그라운드 스레드에서 실행하도록 최적화되어 있는 디스패처, 안드로이드의 기본 스레드풀(Thread Pool)을 사용한다.
 + Dispatchers.IO : 이미지 다운로드, 파일 입출력 등의 입출력에 최적화되어 있는 디스패처
