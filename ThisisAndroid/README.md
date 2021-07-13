@@ -28,3 +28,5 @@
 + [Service](https://github.com/njh0317/Android/tree/main/ThisisAndroid/ServiceTest)
 + [ForegroundService](https://github.com/njh0317/Android/tree/main/ThisisAndroid/ForegroundService)
 + [ContentResolver](https://github.com/njh0317/Android/tree/main/ThisisAndroid/ContentResolver)
++ [HttpUrlConnection](https://github.com/njh0317/Android/tree/main/ThisisAndroid/NetworkHttpUrlConnection)
++ [Retrofit](https://github.com/njh0317/Android/tree/main/ThisisAndroid/NetworkRetrofit)
