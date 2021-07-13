@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.fragment.databinding.FragmentListBinding
 
-class ListFragment : Fragment() {
+class bListFragment : Fragment() {
 
      var mainActivity: MainActivity? = null
     lateinit var binding: FragmentListBinding
