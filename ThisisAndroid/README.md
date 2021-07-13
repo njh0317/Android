@@ -25,6 +25,6 @@
 + [Coroutine](https://github.com/njh0317/Android/tree/main/ThisisAndroid/Coroutine)
 
 7/13
-+ [Service](https://github.com/njh0317/Android/tree/main/ThisisAndroid/MyService)
++ [Service](https://github.com/njh0317/Android/tree/main/ThisisAndroid/ServiceTest)
 + [ForegroundService](https://github.com/njh0317/Android/tree/main/ThisisAndroid/ForegroundService)
 + [ContentResolver](https://github.com/njh0317/Android/tree/main/ThisisAndroid/ContentResolver)
