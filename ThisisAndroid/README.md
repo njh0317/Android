@@ -36,3 +36,4 @@
 
 7/14
 + [DI by Kodein](https://github.com/njh0317/Android/tree/main/ThisisAndroid/DependencyInjectionKodein)
+  + 출처 : https://www.youtube.com/watch?v=as7BjTfS3wU
