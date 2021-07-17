@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NaverNewsApp</string>
+    <string name="search_hint">검색어 입력</string>
+    <string name="search">search</string>
+</resources>
