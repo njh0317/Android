@@ -22,12 +22,20 @@ class MainViewModel(private val repository:NewsRequestRepository): ViewModel() {
     val clientId = "zS1qDEecUmvOwH4z7q4a"
     val clientKey = "O2M_UWko7J"
 
-    fun getSearchResult(keyword: String) {
+    fun initSearchResult(keyword: String) {
         _dataLoading.value = true
         CoroutineScope(Dispatchers.IO).launch {
             repository.requestItemForCoroutine(clientId, clientKey, keyword, 10, 1, "sim")?.let {
                 _data.postValue(it.items)
                 _dataLoading.postValue(false)
+            }
+        }
+    }
+
+    fun getSearchResult(keyword: String, page: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            repository.requestItemForCoroutine(clientId, clientKey, keyword, 10, 10*page+1, "sim")?.let {
+                _data.postValue(it.items)
             }
         }
     }

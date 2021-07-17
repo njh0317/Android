@@ -14,6 +14,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.navernewsapp.R
 import com.example.navernewsapp.data.repository.NewsRequestRepository
 import com.example.navernewsapp.databinding.ActivityMainBinding
@@ -24,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewModel : MainViewModel
     lateinit var viewModelFactory: MainViewModelFactory
     lateinit var adapter : ItemAdapter
+    private var page = 0
+    private var word: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -34,10 +37,8 @@ class MainActivity : AppCompatActivity() {
         viewModelFactory = MainViewModelFactory(NewsRequestRepository())
         viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
         viewModel.data.observe(this) {
-            Log.d("Main", "data changed ${it}")
-            adapter.items.clear()
-            adapter.items.addAll(it)
-            adapter.notifyDataSetChanged()
+            adapter.addItem(it)
+            adapter.notifyItemRangeInserted((page-1)*10, 10)
         }
 
         viewModel.dataLoading.observe(this) {
@@ -58,6 +59,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.recycler.adapter = adapter
         binding.recycler.layoutManager = LinearLayoutManager(this)
+
+        binding.recycler.addOnScrollListener(object: RecyclerView.OnScrollListener(){
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+
+                val lastVisibleItemPosition =
+                        (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
+                val itemTotalCount = recyclerView.adapter!!.itemCount-1
+                if(itemTotalCount!=-1 && !binding.recycler.canScrollVertically(1) && lastVisibleItemPosition == itemTotalCount) {
+                    adapter.deleteLoading()
+                    viewModel.getSearchResult(word!!, page++)
+                }
+            }
+        })
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
@@ -70,10 +85,17 @@ class MainActivity : AppCompatActivity() {
         searchView.setSearchableInfo(manager.getSearchableInfo(componentName))
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+
             override fun onQueryTextSubmit(query: String?): Boolean {
+                word = null
+                page = 0
                 if(query!=null) {
-                    viewModel.getSearchResult(query)
+                    word = query
+                    adapter.items.clear()
+                    adapter.notifyDataSetChanged()
+                    viewModel.initSearchResult(query)
                     hideKeyboard()
+                    page = 1
 
                 }
                 return true
