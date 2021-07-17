@@ -12,6 +12,7 @@
 
 ## Used Tool
 + RecyclerView
+  + addOnScrollListener 무한 스크롤 구현
 + Coroutine
 + Retrofit
 + View Binding
