@@ -40,3 +40,6 @@
 
 7/17
 + [Naver News App](https://github.com/njh0317/Android/tree/main/ThisisAndroid/NaverNewsApp)
+
+7/18
++ [Naver Translator App](https://github.com/njh0317/Android/tree/main/ThisisAndroid/NaverTranslator)
