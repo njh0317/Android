@@ -7,7 +7,7 @@
 ## API
 [**Naver News API**](https://developers.naver.com/docs/serviceapi/search/news/news.md#%EB%89%B4%EC%8A%A4)
 
-## Design Patter
+## Design Pattern
 + MVVM
 
 ## Used Tool
