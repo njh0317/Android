@@ -16,9 +16,9 @@ class MainViewModel(private val repository: TranslateRequestFactory): ViewModel(
     val clientId = "98NvpE0fqJYSVcvGPVDL"
     val clientKey = "hK72l8uTxa"
 
-    fun translate(keyword: String) {
+    fun translate(keyword: String, source: String, target: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            repository.requestTranslateForCoroutine(clientId, clientKey, "ko", "en", keyword).let {
+            repository.requestTranslateForCoroutine(clientId, clientKey, source, target, keyword).let {
                 _data.postValue(it.message.result.translatedText)
             }
         }

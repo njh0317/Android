@@ -15,7 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel : MainViewModel
     lateinit var viewModelFactory: MainViewModelFactory
-
+    lateinit var fromtext: String
+    lateinit var totext: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.data.observe(this) {
             binding.totext.text = it
         }
+        fromtext = binding.from.text.toString()
+        totext = binding.to.text.toString()
         setListner()
     }
 
@@ -40,9 +43,40 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun afterTextChanged(s: Editable?) {
-                viewModel.translate(s.toString())
+                if(s.toString()!="") {
+                    word[fromtext]?.let { source ->
+                        word[totext]?.let { target ->
+                            viewModel.translate(
+                                s.toString(),
+                                source, target
+                            )
+                        }
+                    }
+                }
             }
 
         })
+
+        binding.button.setOnClickListener {
+            val (text1, text2) = arrayOf(binding.from.text, binding.to.text)
+            binding.from.text = text2
+            binding.to.text = text1
+
+            fromtext = binding.from.text.toString()
+            totext = binding.to.text.toString()
+        }
+    }
+
+    companion object {
+        val word = mapOf("한국어" to "ko",
+        "영어" to "en",
+        "일본어" to "ja",
+        "중국어 간체" to "zh-CH",
+        "중국어 번체" to "zh-TW",
+        "베트남어" to "vi",
+        "러시아어" to "ru",
+        "스페인어" to "es",
+        "이탈리아어" to "it",
+        "프랑스어" to "fr")
     }
 }
