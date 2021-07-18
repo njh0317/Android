@@ -71,6 +71,7 @@ class ItemAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 intent.putExtra("link", binding.title.text)
                 intent.putExtra("date", binding.date.text)
                 it.context.startActivity(intent)
+                System.out.println(binding.link.toString())
             }
         }
         fun setItem(item: Items) {
@@ -80,8 +81,8 @@ class ItemAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             binding.title.text = item.title
             binding.link.text = item.link
             binding.totalContent.text = item.description
+            System.out.println(item.link)
         }
-
     }
 
     inner class LoadingHolder(val binding: RecyclerLoadingBinding) : RecyclerView.ViewHolder(binding.root) {
