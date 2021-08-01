@@ -1,6 +1,7 @@
 ### 일정
 *이것이 안드로이드다 with 코틀린* 을 참고해 작성한 코드입니다.
 
+
 7/5
 + [Activity](https://github.com/njh0317/Android/tree/main/ThisisAndroid/Activity)
 
